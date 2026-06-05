@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NimRod Clicker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="background-overlay"></div>
+    <div class="game-container">
+        <div class="customization-side-container">
+            <div class="customization-button-container">
+                <button id="customization-toggle-button">Skins</button>
+            </div>
+            <div id="customization-container-wrapper" style="display: none;">
+                <div id="customization">
+                    <h2>✨ Skin Customization</h2>
+                    <div class="customization-container">
+                        <div class="customization-row">
+                            <div class="skins-number"> Default</div>
+                            <img src="image/pic1.png" alt="Default Skin Preview" style="width: 64px; height: 64px; image-rendering: pixelated;">
+                            <button class="customization-btn skin-btn" id="skin-default" data-skin="default">Equip (Free)</button>
+                        </div>
+                        <div class="customization-row">
+                            <div class="skins-number">  Blue  <br />   Skin</div>
+                            <img src="image/pic2.png" alt="Blue Skin Preview" style="width: 64px; height: 64px; image-rendering: pixelated;">
+                            <button class="customization-btn skin-btn" id="skin-blue" data-skin="blue">Buy (150)</button>
+                        </div>
+                        <div class="customization-row">
+                            <div class="skins-number"> Yellow <br /> Skin</div>
+                            <img src="image/pic3.png" alt="Yellow Skin Preview" style="width: 64px; height: 64px; image-rendering: pixelated;">
+                            <button class="customization-btn skin-btn" id="skin-yellow" data-skin="yellow">Buy (300)</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="stats-achievements-button-container">
+                 <button id="stats-achievements-toggle-button">Stats</button>
+            </div>
+            <div id="stats-achievements-container-wrapper" style="display: none;">
+                <div id="stats-achievements-panel">
+                    <h2>📊 Stats & Achievements</h2>
+                    <div id="stats-panel">
+                        <h3>Player Stats</h3>
+                        <p>Total Clicks: <span id="stat-total-clicks">0</span></p>
+                        <p>Monsters Slain: <span id="stat-total-kills">0</span></p>
+                        <p>Total Coins Earned: <span id="stat-total-coins">0</span></p>
+                        <p>Critical Hit %: <span id="stat-crit-chance">0%</span></p>
+                    </div>
+                    <div id="achievements-panel">
+                        <h3>Achievements</h3>
+                        <ul id="achievements-list">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="save-button-container">
+                <button id="save-button">💾 Save Game</button>
+            </div>
+        </div>
+
+        <div class="enemy-section">
+            <h1>NimRod Clicker</h1>
+            <div class="stats">
+                <p>💰 Coins: <br /><span id="coins">0</span></p>
+                <p>⚔️ Damage per Click: <br /><span id="damage-per-click">1</span></p>
+                <p>🔥 Clicks per Second: <br /><span id="clicks-per-second">0</span></p>
+            </div>
+            <div class="enemy-container">
+                <p>🏆 Boss HP: <span id="boss-hp">5</span></p>
+                <div class="health-bar">
+                    <div id="health-bar-fill"></div>
+                </div>
+                <img id="enemy" src="image/monster.png" alt="Enemy">
+            </div>
+            <div class="character-container">
+                <div id="character"></div>
+                <img id="arrow-overlay" src="image/arrow.png" alt="Arrow Overlay">
+                <img id="arrow" src="image/arrow.png" alt="Arrow">
+            </div>
+            <button id="attack-btn"> <img src="image/attack.jpg" alt="Attack" width="80"></button>
+        </div>
+
+        <div class="shop-side-container">
+            <div class="shop-button-container">
+                <button id="shop-toggle-button">Shop</button>
+            </div>
+            <div id="shop-container-wrapper" style="display: none;">
+                <div id="shop">
+                    <h2>🛒 Upgrade Shop</h2>
+                    <div class="shop-container">
+                        <div class="shop-row">
+                            <button class="shop-btn" id="Upgrade-tap" data-cost="20" data-effect="increaseDamage">👆 Upgrade Tap (20)</button>
+                            <button class="shop-btn" id="triple-strike" data-cost="50" data-effect="tripleDamage" data-single-purchase="true">💥 Triple Strike (50)</button>
+                        </div>
+                        <div class="shop-row">
+                            <button class="shop-btn" id="adrenaline-rush" data-cost="100" data-effect="increaseAttackSpeed">🚀 Adrenaline Rush (100)</button>
+                            <button class="shop-btn" id="critical-hits" data-cost="150" data-effect="enableCriticalHits" data-single-purchase="true">🎯 Critical Hits (150)</button>
+                        </div>
+                        <div class="shop-row">
+                            <button class="shop-btn" id="auto-clicker" data-cost="200" data-effect="upgradeAutoClicker">🤖 Auto Clicker (200)</button>
+                            <button class="shop-btn" id="turbo-clicker" data-cost="300" data-effect="increaseAutoClickSpeed">⚡ Turbo Clicker (300)</button>
+                        </div>
+                        <div class="shop-row">
+                            <button class="shop-btn" id="summoned-ally" data-cost="500" data-effect="summonAlly">🧙‍♂️ Summoned Ally (500)</button>
+                            <button class="shop-btn" id="treasure-hunter" data-cost="250" data-effect="increaseCoinDrops" data-single-purchase="true">💎 Treasure Hunter (250)</button>
+                        </div>
+                        <div class="shop-row">
+                            <button class="shop-btn" id="lucky-strike" data-cost="500" data-effect="applyLuckyStrike" data-single-purchase="true">🍀 Lucky Strike (500)</button>
+                            <button class="shop-btn" id="jackpot" data-cost="500" data-effect="enableJackpot" data-single-purchase="true">🎰 Jackpot (500)</button>
+                        </div>
+                        <div class="shop-row">
+                            <button class="shop-btn" id="weak-spot" data-cost="450" data-effect="enableWeakSpot">🎯 Weak Spot (450)</button>
+                            <button class="shop-btn" id="firepower" data-cost="800" data-effect="enableBurnEffect">🔥 Firepower (800)</button>
+                        </div>
+                        <div class="shop-row">
+                            <button class="shop-btn" id="armor-piercer" data-cost="600" data-effect="ignoreEnemyArmor">🛡️ Armor Piercer (600)</button>
+                            <button class="shop-btn" id="explosive-hits" data-cost="700" data-effect="enableExplosions">💣 Explosive Hits (700)</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="tutorial-overlay" class="popup-overlay" style="display: none;">
+        <div id="tutorial-popup" class="popup">
+            <h3 id="tutorial-title">Welcome to NimRod Clicker!</h3>
+            <p id="tutorial-text">Click the monster or the attack button to deal damage!</p>
+            <button id="tutorial-next-btn">Got it!</button>
+        </div>
+    </div>
+
+    <div id="achievement-unlocked-overlay" class="popup-overlay" style="display: none;">
+        <div id="achievement-popup" class="popup achievement-popup">
+            <h3>🏆 Achievement Unlocked! 🏆</h3>
+            <p id="achievement-unlocked-text">Achievement Name</p>
+            <button id="achievement-close-btn">Awesome!</button>
+        </div>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
